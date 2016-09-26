@@ -1,6 +1,8 @@
 # MMButtonMenu
 Floating menu control for iOS 8+ (as used in Mile Mapper)
 
+![Preview](/GitHubAssets/mmbuttonmenu.gif)
+
 ## Installation
 ### Manually
 Either clone or download this Repo. Then simply drag the MMButtonMenu folder to your Xcode project.
