@@ -20,12 +20,13 @@ static CGFloat const kShiftXOffset = kAnchorPointXOffset * 2;
 static CGFloat const kSubMenuButtonMovementAnimationDuration = 0.2f;
 static NSInteger const kButtonSpacingUnit = 60;
 
-typedef void(^AnimationBlock)(BOOL);
+typedef void (^AnimationBlock)(BOOL);
 
 @implementation MMButtonMenu {
     BOOL _didSetup;
     NSMutableArray *_animationQueue;
     AnimationBlock (^_getNextAnimationBlock)();
+    CGPoint _anchorPoint;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame menuItems:(NSArray *)menuItems {
@@ -81,6 +82,9 @@ typedef void(^AnimationBlock)(BOOL);
     [_mainMenuItem addTarget:self
                       action:@selector(toggleMenu)
             forControlEvents:UIControlEventTouchUpInside];
+    
+    UIImage *menuImage = [[UIImage imageNamed:@"menu"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [_mainMenuItem setImage:menuImage forState:UIControlStateNormal];
     
     [self addSubview:_mainMenuItem];
     

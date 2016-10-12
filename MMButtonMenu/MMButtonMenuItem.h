@@ -14,10 +14,8 @@
 
 extern const CGFloat kButtonShadowOpacity;
 
-@property (nonatomic, strong) MMButtonMenu *parentMenu;
+@property (nonatomic, weak) MMButtonMenu *parentMenu;
 @property (nonatomic, copy) NSArray *subMenuItems;
-@property (nonatomic, strong) NSTimer *touchHoldTimer;
-@property (nonatomic) CGFloat touchHoldPercentage;
 @property (nonatomic) NSInteger menuIndex;
 @property (assign) CGPoint lastPosition;
 

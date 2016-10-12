@@ -13,24 +13,20 @@
 
 @interface MMButtonMenu : UIView
 
-@property (nonatomic, weak) id<MMButtonMenuDelegate>delegate;
+@property (nonatomic, weak) id <MMButtonMenuDelegate> delegate;
 
-@property (nonatomic, strong) MMButtonMenuItem *mainMenuItem;
-@property (nonatomic, strong) NSMutableArray *menuElements;
+@property (nonatomic) MMButtonMenuItem *mainMenuItem;
+@property (nonatomic) NSMutableArray *menuElements;
 @property (nonatomic, copy) NSArray *menuItems;
-@property (nonatomic) CGPoint anchorPoint;
 
 @property (nonatomic) BOOL isTranslucent;
 @property (nonatomic) BOOL isExpanded;
 @property (nonatomic) BOOL isAnimating;
 
 - (instancetype)initWithFrame:(CGRect)frame menuItems:(NSArray *)menuItems;
-
 - (void)addSubmenu:(NSArray *)subMenuItems toMenuItem:(MMButtonMenuItem *)menuItem;
-
 - (void)alignRight;
 - (void)alignLeft;
-
 - (void)toggleMenu;
 - (void)toggleShift;
 - (void)setTranslucent:(BOOL)translucent;

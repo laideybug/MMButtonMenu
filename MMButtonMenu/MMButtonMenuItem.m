@@ -40,8 +40,6 @@ static CGFloat const kButtonDiameter = 44.0f;
     self.layer.shadowRadius = 0.0;
     self.layer.shadowPath = [[UIBezierPath bezierPathWithRoundedRect:self.layer.bounds cornerRadius:self.layer.cornerRadius] CGPath];
     self.layer.masksToBounds = NO;
-    
-    _touchHoldPercentage = 0.0f;
 }
 
 - (void)setSubMenuItems:(NSArray *)subMenuItems {
@@ -62,7 +60,7 @@ static CGFloat const kButtonDiameter = 44.0f;
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    if (_parentMenu && !_isSubMenuItem && !_subMenuItems) {
+    if (_parentMenu && !_isSubMenuExpanded && !_isSubMenuItem) {
         [_parentMenu collapseExpandedSubMenus];
     }
     
