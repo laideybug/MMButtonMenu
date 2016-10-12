@@ -267,7 +267,7 @@ typedef void (^AnimationBlock)(BOOL);
             return ^(BOOL finished){
                 strongSelf->_isAnimating = NO;
                 
-                if (strongSelf->_delegate) {
+                if ([strongSelf->_delegate respondsToSelector:@selector(buttonMenuDidFinishAnimating)]) {
                     [strongSelf->_delegate buttonMenuDidFinishAnimating];
                 }
             };
@@ -305,7 +305,7 @@ typedef void (^AnimationBlock)(BOOL);
     [_animationQueue addObject:^(BOOL finished){
         __strong typeof(self) strongSelf = weakSelf;
         
-        if (strongSelf->_delegate) {
+        if ([strongSelf->_delegate respondsToSelector:@selector(buttonMenuWillExpand:)]) {
             [strongSelf->_delegate buttonMenuWillExpand:strongSelf];
         }
         
@@ -348,7 +348,7 @@ typedef void (^AnimationBlock)(BOOL);
                                      _isExpanded = YES;
                                      [weakSelf setUserInteractionEnabled:YES];
                                      
-                                     if (strongSelf->_delegate) {
+                                     if ([strongSelf->_delegate respondsToSelector:@selector(buttonMenuDidExpand:)]) {
                                          [strongSelf->_delegate buttonMenuDidExpand:strongSelf];
                                      }
                                      
@@ -368,7 +368,7 @@ typedef void (^AnimationBlock)(BOOL);
     [_animationQueue addObject:^(BOOL finished){
         __strong typeof(self) strongSelf = weakSelf;
         
-        if (strongSelf->_delegate) {
+        if ([strongSelf->_delegate respondsToSelector:@selector(buttonMenuWillCollapse:)]) {
             [strongSelf->_delegate buttonMenuWillCollapse:strongSelf];
         }
         
@@ -402,7 +402,7 @@ typedef void (^AnimationBlock)(BOOL);
                                      [weakSelf setUserInteractionEnabled:YES];
                                      [weakSelf setMenuItemsHidden:YES];
                                      
-                                     if (strongSelf->_delegate) {
+                                     if ([strongSelf->_delegate respondsToSelector:@selector(buttonMenuDidCollapse:)]) {
                                          [strongSelf->_delegate buttonMenuDidCollapse:strongSelf];
                                      }
                                      
@@ -441,7 +441,7 @@ typedef void (^AnimationBlock)(BOOL);
     [_animationQueue addObject:^(BOOL finished){
         __strong typeof(self) strongSelf = weakSelf;
         
-        if (strongSelf->_delegate) {
+        if ([strongSelf->_delegate respondsToSelector:@selector(buttonMenuWillExpandSubMenuFromMenuItem:)]) {
             [strongSelf->_delegate buttonMenuWillExpandSubMenuFromMenuItem:menuItem];
         }
         
@@ -469,7 +469,7 @@ typedef void (^AnimationBlock)(BOOL);
                                      menuItem.isSubMenuExpanded = YES;
                                      [weakSelf setUserInteractionEnabled:YES];
                                      
-                                     if (strongSelf->_delegate) {
+                                     if ([strongSelf->_delegate respondsToSelector:@selector(buttonMenuDidExpandSubMenuFromMenuItem:)]) {
                                          [strongSelf->_delegate buttonMenuDidExpandSubMenuFromMenuItem:menuItem];
                                      }
                                      
@@ -495,7 +495,7 @@ typedef void (^AnimationBlock)(BOOL);
     [_animationQueue addObject:^(BOOL finished){
         __strong typeof(self) strongSelf = weakSelf;
         
-        if (strongSelf->_delegate) {
+        if ([strongSelf->_delegate respondsToSelector:@selector(buttonMenuWillCollapseSubMenuFromMenuItem:)]) {
             [strongSelf->_delegate buttonMenuWillCollapseSubMenuFromMenuItem:menuItem];
         }
         
@@ -516,7 +516,7 @@ typedef void (^AnimationBlock)(BOOL);
                                      [weakSelf setUserInteractionEnabled:YES];
                                      [weakSelf setSubMenuItems:menuItem.subMenuItems hidden:YES];
                                      
-                                     if (strongSelf->_delegate) {
+                                     if ([strongSelf->_delegate respondsToSelector:@selector(buttonMenuDidCollapseSubMenuFromMenuItem:)]) {
                                          [strongSelf->_delegate buttonMenuDidCollapseSubMenuFromMenuItem:menuItem];
                                      }
                                      
